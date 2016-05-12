@@ -77,13 +77,16 @@ fprintf('maxerr : %.8f\n\n', maxerr);
 FigHandle = figure(1);
 set(FigHandle, 'Position', [100, 100, 750, 750]);
 set(gca,'fontsize',20);
+xlabel('x'); ylabel('u(x,t)');
+axis([90 110 -5 105])
 hold on;
 grid on;
 plot(x,u(:,1)','k-')
 plot(x, exc,'r*-')
 plot(x,u(:,end)','ko-')
-plot(x,100*abs(u(:,end) - exc'), 'b--' )
-xlabel('x'); ylabel('u(x,t)')
-axis([90 110 -5 105])
+
+yyaxis right
+plot(x, abs(u(:,end) - exc'), 'b--' )
+
 title('corn\_FDM\_smooth\_2.m')
 legend('Payoff', 'Exact', 'FDM solution', 'error', 'location','northwest')
