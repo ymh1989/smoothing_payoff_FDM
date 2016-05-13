@@ -61,8 +61,13 @@ It is difficult for derivatives with discontinuous payoff to be obtained a accur
 ###Reference###
 
 \[1\] Haug, Espen Gaarder. The complete guide to option pricing formulas. McGraw-Hill Companies, 2007.
+
 \[2\] Tavella, Domingo, and Curt Randall. Pricing financial instruments: The finite difference method. Vol. 13. John Wiley & Sons, 2000.
+
 \[3\] Pooley, David M., Kenneth R. Vetzal, and Peter A. Forsyth. "Convergence remedies for non-smooth payoffs in option pricing." Journal of Computational Finance 6.4 (2003): 25-40.
+
 \[4\] Jeong, Darae, and Junseok Kim. "A comparison study of ADI and operator splitting methods on option pricing models." Journal of Computational and Applied Mathematics 247 (2013): 162-171.
+
 \[5\] Rannacher, Rolf. "Finite element solution of diffusion problems with irregular data." Numerische Mathematik 43.2 (1984): 309-327.
+
 \[6\] Giles, Michael B., and Rebecca Carter. "Convergence analysis of Crank-Nicolson and Rannacher time-marching." (2005).
