@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-digital option(cash-or-nothing) 1-point smoothing
+digital option(cash-or-nothing) version 1 smoothing
 @author: Minhyun Yoo
 """
 from time import time
@@ -30,7 +30,6 @@ def thomas(alpha, beta, gamma, f):
     del ac, bc, gc, fc
     return x
 
-
 timer = time()
 Nt = 100; # # of time steps
 T = 1. / 365.; # Near the maturity
@@ -52,8 +51,8 @@ h = np.concatenate([h, np.array([h[-1]])]);
 cash = 100;
 u = np.zeros((Nx, Nt+1));
 
-###### 1-point smoothing ######
-equd = 0.5;
+###### version 1 ######
+equd = 0.5; # can be modified
 rev = (x - E) / equd;
 
 y1 = np.zeros(Nx);
@@ -65,7 +64,7 @@ for i in xrange(Nx):
     else:
         y1[i] = 1.0;
 u[:, 0] = cash * y1;
-##############################
+########################
 
 # tridiagonal matrix
 f = np.zeros(Nx-1); d = np.zeros(Nx-1); 

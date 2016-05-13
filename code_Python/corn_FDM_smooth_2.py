@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-digital option(cash-or-nothing) original
+digital option(cash-or-nothing) version 2 smoothing
 @author: Minhyun Yoo
 """
 from time import time
@@ -30,7 +30,6 @@ def thomas(alpha, beta, gamma, f):
     del ac, bc, gc, fc
     return x
 
-
 timer = time()
 Nt = 100; # # of time steps
 T = 1. / 365.; # Near the maturity
@@ -51,7 +50,22 @@ h = np.concatenate([h, np.array([h[-1]])]);
 # digital option(cach-or-nothing)
 cash = 100;
 u = np.zeros((Nx, Nt+1));
-u[x > E, 0] = cash;
+###### version 2 ######
+equd = 0.5; # can be modified
+rev = (x - E) / equd;
+
+y2 = np.zeros(Nx);
+for i in xrange(Nx):
+    if ((rev[i] >= -1.0) & (rev[i] <= 0.0)):
+        y2[i] = 0.5*(1.0 + rev[i])**2;
+    elif ((rev[i] >= 0.0) & (rev[i] <= 1.0)):
+        y2[i] = 1.0 - 0.5*(1.0 - rev[i])**2;
+    elif (rev[i] < -1.0):
+        y2[i] = 0.0;  
+    else:
+        y2[i] = 1.0;
+u[:, 0] = cash * y2;
+########################
 
 # tridiagonal matrix
 f = np.zeros(Nx-1); d = np.zeros(Nx-1); 
@@ -106,7 +120,7 @@ ax1.set_xlim(90, 110)
 ax1.set_xlabel('$x$')
 ax1.set_ylabel('$u(x,t)$')
 ax2.set_ylabel('$error$')
-plt.title('corn_FDM_original.py')
+plt.title('corn_FDM_smooth_2.py')
 
 lns = pl1+pl2+pl3+pl4;
 labs = [l.get_label() for l in lns]

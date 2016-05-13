@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-digital option(cash-or-nothing) 3-point smoothing
+digital option(cash-or-nothing) version 3 smoothing
 @author: Minhyun Yoo
 """
 from time import time
@@ -51,12 +51,12 @@ h = np.concatenate([h, np.array([h[-1]])]);
 cash = 100;
 u = np.zeros((Nx, Nt+1));
 
-###### 3-point smoothing ######
-equd = 0.5;
+###### version 3 ######
+equd = 0.5; # can be modified
 rev = (x - E) / equd;
 
 y3 = np.zeros(Nx);
-w = 0.7; # weight
+w = 0.7; # weight # can be modified
 for i in xrange(Nx):
     if ((rev[i] >= -2.0) & (rev[i] <= -1.0)):
         y3[i] = (1.0 - w) * ( 0.25*(2.0 + rev[i])**4 - (1./3.)*(2.0 + rev[i])**3 );
@@ -73,7 +73,7 @@ for i in xrange(Nx):
     else:
         y3[i] = 1.0;
 u[:, 0] = cash * y3;
-##############################
+######################
 
 # tridiagonal matrix
 f = np.zeros(Nx-1); d = np.zeros(Nx-1); 
@@ -133,8 +133,3 @@ plt.title('corn_FDM_smooth_3.py')
 lns = pl1+pl2+pl3+pl4;
 labs = [l.get_label() for l in lns]
 ax1.legend(lns, labs, loc=0)
-
-#axes = plt.gca()
-#axes.set_xlim([90, 110])
-#axes.set_ylim([-5, 105])
- 

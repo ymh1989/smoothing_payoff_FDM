@@ -1,13 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu May 12 17:40:17 2016
-
-@author: Minhyun Yoo
-"""
-
-# -*- coding: utf-8 -*-
-"""
-digital option(cash-or-nothing) 3-point smoothing
+digital option(cash-or-nothing) version 0 (original)
 @author: Minhyun Yoo
 """
 from time import time
@@ -57,35 +50,12 @@ h = np.concatenate([h, np.array([h[-1]])]);
 # digital option(cach-or-nothing)
 cash = 100;
 u = np.zeros((Nx, Nt+1));
-
-###### 3-point smoothing ######
-equd = 0.5;
-rev = (x - E) / equd;
-
-y3 = np.zeros(Nx);
-w = 0.7; # weight
-for i in xrange(Nx):
-    if ((rev[i] >= -2.0) & (rev[i] <= -1.0)):
-        y3[i] = (1.0 - w) * ( 0.25*(2.0 + rev[i])**4 - (1./3.)*(2.0 + rev[i])**3 );
-    elif ((rev[i] >= -1.0) & (rev[i] <= 0.0)):
-        y3[i] = ( (1.0 - w) * ( 0.25*(1.0+rev[i])**4 + (1./3.)*(1+rev[i])**3 
-        + 0.5*(1.0+rev[i])**2 - (1./12.) ) + w*(0.5*(1.0+rev[i])**2) );
-    elif ((rev[i] >= 0.0) & (rev[i] <= 1.0)):
-        y3[i] = ( 1.0 - ((1.0 - w) * ( 0.25*(1.0-rev[i])**4 + (1./3.)*(1.0-rev[i])**3 
-        + 0.5*(1.0-rev[i])**2 - (1./12.) ) + w*(0.5*(1.0-rev[i])**2)) );       
-    elif ((rev[i] >= 1.0) & (rev[i] <= 2.0)):
-        y3[i] = 1.0 - (1.0 - w) * ( 0.25*(2.0-rev[i])**4 - (1./3.)*(2.0-rev[i])**3);
-    elif (rev[i] < -2.0):
-        y3[i] = 0.0;
-    else:
-        y3[i] = 1.0;
-u[:, 0] = cash * y3;
-##############################
+u[x > E, 0] = cash;
 
 # tridiagonal matrix
 f = np.zeros(Nx-1); d = np.zeros(Nx-1); 
 a = np.zeros(Nx-1); c = np.zeros(Nx-1);
-for i in xrange(1, Nx):
+for i in range(1, Nx):
     d[i-1] = 1.0 + dt * (((sig*x[i])**2 - r*x[i]*(h[i]-h[i-1])) / (h[i-1]*h[i]) + r );
     c[i-1] = dt * ( -(sig*x[i])**2 - r*x[i]*h[i-1]) / (h[i]*(h[i]+h[i-1]));
     a[i-1] = dt * ( -(sig*x[i])**2 + r*x[i]*h[i]) / (h[i-1]*(h[i]+h[i-1]));
@@ -94,7 +64,7 @@ d[Nx-2] = d[Nx-2] + 2.0*c[Nx-2];
 a[Nx-2] = a[Nx-2] - c[Nx-2];
 
 # time loop
-for n in xrange(Nt):
+for n in range(Nt):
     b = u[1:Nx, n];
     u[1:Nx, n+1] = thomas(a,d,c,b);
     
@@ -135,13 +105,8 @@ ax1.set_xlim(90, 110)
 ax1.set_xlabel('$x$')
 ax1.set_ylabel('$u(x,t)$')
 ax2.set_ylabel('$error$')
-plt.title('corn_FDM_smooth_3.py')
+plt.title('corn_FDM_original.py')
 
 lns = pl1+pl2+pl3+pl4;
 labs = [l.get_label() for l in lns]
 ax1.legend(lns, labs, loc=0)
-
-#axes = plt.gca()
-#axes.set_xlim([90, 110])
-#axes.set_ylim([-5, 105])
- 
