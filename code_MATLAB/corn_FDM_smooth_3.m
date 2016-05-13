@@ -19,7 +19,7 @@ h = [h, h(end)];
 cash = 100;
 u = zeros(Nx, Nt+1);
 
-%%%%%%% 2-point smoothing %%%%%%%
+%%%%%%% version 2 %%%%%%%
 equd = 0.5;
 rev = (x-E)./(equd);
 
@@ -44,7 +44,7 @@ for i = 1:Nx
 end
 
 u(:, 1) = cash*y3; % payoff
-%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
 
 % tridiagonal matrix
 d = zeros(1,Nx-1); c = zeros(1,Nx-1); a = zeros(1,Nx-1);
