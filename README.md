@@ -32,6 +32,7 @@ It is difficult for derivatives with discontinuous payoff to be obtained a accur
 - Test case : European digital call option
 - FDM method : Fully implicit FDM
 - You can modifiy the parameters.
+
 |            | Stock | Strike | Maturity  | Riskless  <p>interest rate</p> | Volatility | Number of simulations | Cash  |
 |------------|-------|--------|-----------|-------------------------|------------|-----------------------|-------|
 | Parameters | 100.0 | 100.0  | 1.0/365.0 | 0.03                    | 0.3        | 10, 10, 10            | 100.0 |
@@ -40,6 +41,7 @@ It is difficult for derivatives with discontinuous payoff to be obtained a accur
 - RMSE is defined on 80.0~120.0.
 - Maximum error is obtained on all of compuational domain.
 - The figures are contained in `Code` directory.
+
 |           | RMSE       | Maxerr     |
 |-----------|------------|------------|
 | version 0 | 0.02485242 | 0.07421257 |
