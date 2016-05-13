@@ -33,7 +33,7 @@ It is difficult for derivatives with discontinuous payoff to be obtained a accur
 - FDM method : Fully implicit FDM
 - You can modifiy the parameters.
 
-|            | Stock | Strike | Maturity  | Riskless  <p>interest rate</p> | Volatility | Number of simulations | Cash  |
+|            | Stock | Strike | Maturity  | Riskless  <p>interest rate</p> | Volatility | Number <p>of simulations</p> | Cash  |
 |------------|-------|--------|-----------|-------------------------|------------|-----------------------|-------|
 | Parameters | 100.0 | 100.0  | 1.0/365.0 | 0.03                    | 0.3        | 10, 10, 10            | 100.0 |
 
