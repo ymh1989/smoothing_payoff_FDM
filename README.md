@@ -86,7 +86,7 @@ It is difficult for derivatives with discontinuous payoff to be obtained a accur
 
 |           | RMSE       | Maxerr     |
 |-----------|------------|------------|
-| version 0 | 0.02485242 | 0.0742125  |
+| version 0 | 0.02485242 | 0.07421257 |
 | version 1 | 0.01629715 | 0.04338666 |
 | version 2 | 0.01859031 | 0.04798860 |
 | version 3 | 0.01535285 | 0.03539024 |
