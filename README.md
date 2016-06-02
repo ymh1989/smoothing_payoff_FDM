@@ -68,9 +68,9 @@ It is difficult for derivatives with discontinuous payoff to be obtained a accur
 
 
 
-|            | Stock | Strike | Maturity  | Riskless <p>interest rate</p> | volatility | cash |
-|------------|-------|--------|-----------|------------------------|------------|------|
-| Parameters | 100.0 | 100.0  | 1.0/365.0 | 0.03                   | 0.3        | 100  |
+|            | Stock | Strike | Time to Maturity  | Riskless <p>interest rate</p> | volatility | cash |
+|------------|-------|--------|-------------------|-------------------------------|------------|------|
+| Parameters | 100.0 | 100.0  | 1.0/365.0         | 0.03                          | 0.3        | 100  |
 
 
 
