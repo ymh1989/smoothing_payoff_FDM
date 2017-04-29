@@ -1,8 +1,8 @@
-##Smoothing Payoff for Finite Difference Method##
+## Smoothing Payoff for Finite Difference Method
 
 
 
-###Introduction###
+### Introduction
 
 
 
@@ -10,7 +10,7 @@ It is difficult for derivatives with discontinuous payoff to be obtained a accur
 
 
 
-###Methods###
+### Methods
 
 
 
@@ -24,7 +24,7 @@ It is difficult for derivatives with discontinuous payoff to be obtained a accur
 
 
 
-###Environment###
+### Environment
 
 
 
@@ -44,7 +44,7 @@ It is difficult for derivatives with discontinuous payoff to be obtained a accur
 
 
 
-###Numerical results###
+### Numerical results
 
 - In this repo, I compare the RMSE(Root Mean Square Error) on interest area and maximum error, respectively, between analytic and numerical solution each three version.
 
@@ -58,7 +58,7 @@ It is difficult for derivatives with discontinuous payoff to be obtained a accur
 
 
 
-####1. Parameters####
+#### 1. Parameters
 
 - Test case : European digital call option
 
@@ -74,7 +74,7 @@ It is difficult for derivatives with discontinuous payoff to be obtained a accur
 
 
 
-####2. Results####
+#### 2. Results
 
 - RMSE is defined on 80.0~120.0.
 
@@ -95,7 +95,7 @@ It is difficult for derivatives with discontinuous payoff to be obtained a accur
 
 
 
-###Future work###
+### Future work
 
 - In fact, this implementation is for increasing accuracy of ELS(Equity Linked Securities) which is a popular financial instrument in South Korea. I'm going to apply this method in pricing ELS for accurate pricing.
 
@@ -105,13 +105,13 @@ It is difficult for derivatives with discontinuous payoff to be obtained a accur
 
 
 
-###Note###
+### Note
 
-- If you're interested in my works, please visit my [homepage](https://sites.google.com/site/yoomh1989/).
+- If you're interested in my works, please [email](mailto:yoomh1989@gmail.com) me.
 
 
 
-###Reference###
+### Reference
 
 
 
